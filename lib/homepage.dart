@@ -39,12 +39,34 @@ class _HomePageState extends State<HomePage> {
         title: new Text(_title)
       ),
       body: new Container(
-        child: new ListView.builder(
-          itemBuilder: (context, index) => new PlanetRow(_planets[index]),
-          itemCount: _planets == null ? 0 : _planets.length,
-          padding: new EdgeInsets.symmetric(vertical: 16.0),
-        ),
+        child: _planets == null ? new PlanetsLoading() : new PlanetsList(_planets)
       ),
+    );
+  }
+}
+
+class PlanetsLoading extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      alignment: Alignment.center,
+      child: new CircularProgressIndicator(),
+    );
+  }
+}
+
+
+class PlanetsList extends StatelessWidget {
+  final List<Planet> _planets;
+
+  PlanetsList(this._planets);
+
+  @override
+  Widget build(BuildContext context) {
+    return new ListView.builder(
+      itemBuilder: (context, index) => new PlanetRow(_planets[index]),
+      itemCount: _planets == null ? 0 : _planets.length,
+      padding: new EdgeInsets.symmetric(vertical: 16.0),
     );
   }
 }
