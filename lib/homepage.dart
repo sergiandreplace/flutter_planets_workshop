@@ -100,9 +100,12 @@ class PlanetRow extends StatelessWidget {
                   )
                 ),
                 padding: new EdgeInsets.all(24.0),
-                child: new Image.network(
-                  _planet.image,
-                  height: 100.0,
+                child: new Hero(
+                  tag: "planet_image_" + _planet.id.toString(),
+                  child: new Image.network(
+                    _planet.image,
+                    height: 100.0,
+                  ),
                 ),
               ),
               new Container(

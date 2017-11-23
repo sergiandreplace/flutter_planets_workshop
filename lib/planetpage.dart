@@ -16,7 +16,10 @@ class PlanetPage extends StatelessWidget {
       body: new Center(
         child: new Column(
           children: <Widget>[
-            new Image.network(_planet.image),
+            new Hero(
+              tag: "planet_image_" + _planet.id.toString(),
+              child: new Image.network(_planet.image)
+            ),
             new Text(_planet.description)
           ]
         ),
