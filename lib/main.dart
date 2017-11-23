@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_planets_workshop/homepage.dart';
+import 'package:flutter_planets_workshop/planetpage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
       ),
       home: new HomePage(_appName),
+      routes: <String,WidgetBuilder> {
+        "/planet": (BuildContext context) => new PlanetPage()
+      },
     );
   }
 }

@@ -81,31 +81,34 @@ class PlanetRow extends StatelessWidget {
     return new Container(
       margin: new EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: new Card(
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            new Container(
-              decoration: new BoxDecoration(
-                gradient: new RadialGradient(
-                  colors: [Colors.white, Colors.black],
-                  stops: [0.0, 1.0],
-                  radius: 0.6,
-                )
+        child: new GestureDetector(
+          onTap: () => Navigator.of(context).pushNamed("/planet"),
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              new Container(
+                decoration: new BoxDecoration(
+                  gradient: new RadialGradient(
+                    colors: [Colors.white, Colors.black],
+                    stops: [0.0, 1.0],
+                    radius: 0.6,
+                  )
+                ),
+                padding: new EdgeInsets.all(24.0),
+                child: new Image.network(
+                  _planet.image,
+                  height: 100.0,
+                ),
               ),
-              padding: new EdgeInsets.all(24.0),
-              child: new Image.network(
-                _planet.image,
-                height: 100.0,
-              ),
-            ),
-            new Container(
-              padding: new EdgeInsets.all(16.0),
-              child: new Text(
-                _planet.name,
-                style: new TextStyle(fontSize: 24.0),
-              ),
-            )
-          ],
+              new Container(
+                padding: new EdgeInsets.all(16.0),
+                child: new Text(
+                  _planet.name,
+                  style: new TextStyle(fontSize: 24.0),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
