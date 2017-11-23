@@ -13,7 +13,7 @@ class PlanetsClient {
     List planets = JSON.decode(response)["planets"];
 
     return planets
-      .map((jsonPlanet) => new Planet.fromJson(jsonPlanet))
+      .map((jsonPlanet) => new Planet.fromJson(jsonPlanet, baseUrl))
       .toList();
   }
 }

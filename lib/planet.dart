@@ -10,14 +10,14 @@ class Planet {
   Planet(this.id, this.name, this.location, this.distance, this.gravity,
     this.description, this.image);
 
-  Planet.fromJson(final dynamic items) : this(
+  Planet.fromJson(final dynamic items, baseUrl) : this(
     items["id"],
     items["name"],
     items["location"],
     items["distance"],
     items["gravity"],
     items["description"],
-    items["image"]
+    baseUrl + items["image"]
   );
 
 }

@@ -26,21 +26,20 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _planetsClient.loadPlanets(_baseUrl)
-      .then((planets) => setState(() => _planets = planets))
-      .catchError((_) => debugPrint("Error loading planets"));
+    _planetsClient
+        .loadPlanets(_baseUrl)
+        .then((planets) => setState(() => _planets = planets))
+        .catchError((_) => debugPrint("Error loading planets"));
   }
 
   @override
   Widget build(BuildContext context) {
-
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(_title)
-      ),
+      appBar: new AppBar(title: new Text(_title)),
       body: new Container(
-        child: _planets == null ? new PlanetsLoading() : new PlanetsList(_planets)
-      ),
+          child: _planets == null
+              ? new PlanetsLoading()
+              : new PlanetsList(_planets)),
     );
   }
 }
@@ -82,10 +81,25 @@ class PlanetRow extends StatelessWidget {
     return new Container(
       margin: new EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: new Card(
-        child: new Container(
-          alignment: Alignment.center,
-          child: new Text(_planet.name),
-          height: 50.0,
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            new Container(
+              color: Colors.black,
+              padding: new EdgeInsets.all(24.0),
+              child: new Image.network(
+                _planet.image,
+                height: 100.0,
+              ),
+            ),
+            new Container(
+              padding: new EdgeInsets.all(16.0),
+              child: new Text(
+                _planet.name,
+                style: new TextStyle(fontSize: 24.0),
+              ),
+            )
+          ],
         ),
       ),
     );
