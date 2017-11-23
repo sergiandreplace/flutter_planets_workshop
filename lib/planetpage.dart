@@ -13,7 +13,7 @@ class PlanetPage extends StatelessWidget {
       appBar: new AppBar(
         title: new Text(_planet.name),
       ),
-      body: new Center(
+      body: new Center( //BEAUTIFY THIS!!!
         child: new Column(
           children: <Widget>[
             new Hero(
