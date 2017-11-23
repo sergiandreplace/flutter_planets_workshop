@@ -85,7 +85,13 @@ class PlanetRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             new Container(
-              color: Colors.black,
+              decoration: new BoxDecoration(
+                gradient: new RadialGradient(
+                  colors: [Colors.white, Colors.black],
+                  stops: [0.0, 1.0],
+                  radius: 0.6,
+                )
+              ),
               padding: new EdgeInsets.all(24.0),
               child: new Image.network(
                 _planet.image,
