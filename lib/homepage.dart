@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_planets_workshop/planet.dart';
+import 'package:flutter_planets_workshop/planetpage.dart';
 import 'package:flutter_planets_workshop/planets_client.dart';
 
 class HomePage extends StatefulWidget {
@@ -82,7 +83,11 @@ class PlanetRow extends StatelessWidget {
       margin: new EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: new Card(
         child: new GestureDetector(
-          onTap: () => Navigator.of(context).pushNamed("/planet"),
+          onTap: () => Navigator.of(context).push(
+            new PageRouteBuilder(
+              pageBuilder: (context, _, __) => new PlanetPage(_planet)
+            ),
+          ),
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
